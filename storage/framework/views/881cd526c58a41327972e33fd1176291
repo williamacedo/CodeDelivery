@@ -1,0 +1,29 @@
+<?php $__env->startSection('content'); ?>
+
+	<div class="container">
+		<h3>Editando categoria: <?php echo e($category->name); ?></h3>
+
+		<?php if($errors->any()): ?>
+			<ul class="alert">
+				<?php foreach($errors->all() as $error): ?>
+					<li><?php echo e($error); ?></li>
+					<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+
+		<?php echo Form::model($category, ['route'=>['admin.categories.update', $category->id]]); ?>
+
+
+		<?php echo $__env->make('admin.categories._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<div class="form-group">
+			<?php echo Form::submit('Salvar categoria',  ['class'=>'btn btn-primary']); ?>
+
+		</div>
+		<?php echo Form::close(); ?>
+
+
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
